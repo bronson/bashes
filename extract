@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Extracts the binaries from the debs.
+
+
+bashes="2.05b 3.0.16 3.2.48 4.2.45"
+
+set -e
+
+for arch in i386 amd64; do
+  mkdir -p $arch
+  for version in $bashes; do
+    rm -rf tt
+    mkdir tt
+    cd tt
+    ar -x ../debs/bash${version}_${version}-2_${arch}.deb
+    tar zxf data.tar.gz
+    # some binaries are named with version, some aren't (?!)
+    cp usr/bin/bash$version ../$arch/bash-$version 2>/dev/null ||
+      cp usr/bin/bash ../$arch/bash-$version
+    cd ..
+    rm -rf tt
+  done
+done
