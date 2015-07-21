@@ -20,7 +20,7 @@ env: BASHES="2.05b 3.0.16 3.2.48 4.2.45"
 script: ./.travis.sh
 ```
 
-And `.travis.sh`
+And `.travis.sh` runs your tests under each version of bash (replace run-tests.sh with your test script):
 
 ```bash
 #!/bin/bash
@@ -30,23 +30,23 @@ test=test/run-tests.sh
 
 # download the bash binaries
 for version in $BASHES; do
-  wget https://raw.githubusercontent.com/bronson/bashes/master/$arch/bash-$version
+  wget -nv https://raw.githubusercontent.com/bronson/bashes/master/$(arch)/bash-$version
   [ ! -f bash-$version ] && exit 1
   chmod a+x bash-$version
 done
 
-# and run the tests on each binary
+# run the tests on each binary
 for version in $BASHES; do
-    echo
-    echo ==================
-    echo Bash $version
-    echo ==================
-    ./bash-$version "$test" || status=$?
+  echo
+  echo ==================
+  echo Bash $version
+  echo ==================
+  ./bash-$version "$test" || status=$?
 done
 
 exit $status
 ```
 
-Now fire off your Travis builds.
+Now fire off your Travis builds and prosper.
 
-Apologies for these docs being rather sparse.  Patches very welcome.
+Apologies for these docs being sparse.  Patches very welcome.
