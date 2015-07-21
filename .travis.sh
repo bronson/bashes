@@ -19,6 +19,6 @@ for arch in amd64 i386; do
       echo ==================
       bashver=$version ./bash-$version "$test" || status=$?
   done
-
-  exit $status
 done
+
+exit $status
