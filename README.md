@@ -2,7 +2,7 @@
 
 Provides different versions of Bash to Travis CI tests.
 
-PPAs don't work anymore on TravisCI!  That's probably for the best,
+PPAs don't work anymore on TravisCI!  That might be for the best
 but it removes a great way of installing test dependencies.  This
 repository provides a stop-gap until a better technique can be found.
 
@@ -12,7 +12,7 @@ Read this post first: http://arongriffis.com/2013/03/25/bashes.html
 
 ## Install
 
-Your `.travis.yml` specifies the versions of bash that should be tested:
+Specify the versions of bash that you want to run in your `.travis.yml`:
 
 ```yaml
 language: bash
@@ -20,7 +20,7 @@ env: BASHES="2.05b 3.0.16 3.2.48 4.2.45"
 script: ./.travis.sh
 ```
 
-And `.travis.sh` runs your tests under each version of bash (replace run-tests.sh with your test script):
+Then add a `.travis.sh` file to run your test with each version of bash.  Set the `test` variable to launch your own tests.
 
 ```bash
 #!/bin/bash
@@ -47,6 +47,7 @@ done
 exit $status
 ```
 
-Now fire off your Travis builds and prosper.
+There's also a [slightly more complex example](https://github.com/bronson/bashes/blob/master/.travis.sh),
+that runs both 32 bit and 64 bit bashes.
 
-Apologies for these docs being sparse.  Patches very welcome.
+Now fire off your Travis builds and prosper.
