@@ -50,4 +50,6 @@ exit $status
 There's also a [slightly more complex example](https://github.com/bronson/bashes/blob/master/.travis.sh),
 that runs both 32 bit and 64 bit bashes.
 
+Here's an example project that uses bashes: https://github.com/bronson/backgrounded
+
 Now fire off your Travis builds and prosper.
